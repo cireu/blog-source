@@ -1,0 +1,32 @@
+{
+  "name": "blog-source",
+  "version": "1.0.0",
+  "description": "My personal blog",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "vuepress": "^1.1.0"
+  },
+  "devDependencies": {
+    "@vuepress/theme-blog": "^1.2.5"
+  },
+  "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "docs:build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cireu/blog-source.git"
+  },
+  "keywords": [
+    "blog"
+  ],
+  "author": "Zhu Zihao",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/cireu/blog-source/issues"
+  },
+  "homepage": "https://github.com/cireu/blog-source#readme"
+}

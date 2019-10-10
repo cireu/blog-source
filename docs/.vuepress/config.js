@@ -23,7 +23,7 @@ module.exports = {
         nav: [
             { text: '首页', link: '/' },
             { text: '标签', link: '/tag/' },
-            { text: '关于', link: '/contact' }
+            { text: '关于', link: '/about' }
         ]
     }
 }

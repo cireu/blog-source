@@ -11,6 +11,8 @@ script:
 
 deploy:
   provider: pages
+  repo: cireu/cireu.github.io
+  branch: master
   skip-cleanup: true
   local_dir: docs/.vuepress/dist
   github-token: $GH_TOKEN

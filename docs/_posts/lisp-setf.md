@@ -4,8 +4,9 @@ date: 2019-09-17
 tag:
  - lisp
 ---
+# setf 中 "f" 的本意
 
-# (setf (car cons) 'cdr)
+## (setf (car cons) 'cdr)
 
 大多数人第一眼见到`setf`，可能会简单的把f理解成form。这种解释很符合直觉，因为我
 们已经有了对symbol进行赋值操作的`setq`。而`setf`可以对form（广义变量）进行赋值。 
@@ -21,6 +22,6 @@ programs》中（[原文](http://www.softwarepreservation.org/projects/LISP/inte
 
 所以`setf`是`setfq`的缩写，f的意思是function。 另外在这篇论文中我们也可以看到MicroLisp引入了现在我们使用的广义变量的概念
 
-# 参考
+## 参考
 
 [原博客](https://g000001.cddddr.org/3715857294)

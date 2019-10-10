@@ -6,7 +6,9 @@ tag:
  - lisp
 ---
 
-# 什么是 compiler macro
+# 浅析 emacs-lisp 中的 compiler-macro
+
+## 什么是 compiler macro
 
 在Elisp里, 我们通常会使用两种构造抽象的方式, macro和function. 这两者的区别相信读
 者都已经了然于胸 (如果你不清楚, 建议查阅Elisp Reference Manual).
@@ -29,9 +31,9 @@ NOTE:
 一个例外是`(funcall #'func 1 2)` 或者`(apply #'func '(1 2 3 4))`, byte-compiler
 会消除掉这种`funcall`或者`apply`, 然后交给compiler macro展开.
 
-# 如何察看compiler macro的展开结果
+## 如何察看compiler macro的展开结果
 
-## macroexpand
+### macroexpand
 
 `macroexpand` `macroexpand-1` `macroexpand-all` 可以打开直接compiler macro.
 
@@ -55,7 +57,7 @@ ELISP> (macroexpand-all '(mapcar #'cadr '((1 2) ((3 4)))))
 
 在这里, `cadr`作为mapcar的参数使用, compiler macro就无能为力了.
 
-## cl-compiler-macroexpand
+### cl-compiler-macroexpand
 
 但是有时候你可能希望不要打开常规宏, 只打开compiler macro, 这时可以使用`cl-lib`中提
 供的`cl-compiler-macroexpand`
@@ -89,20 +91,20 @@ ELISP> (macroexpand-all '(if-let* ((a (cadr '(1 3)))) a))
   (if a a))
 ```
 
-## macrostep
+### macrostep
 
 [macrostep](https://github.com/joddie/macrostep) 可以展开compiler macro, 在
 macrostep里, compiler macro和macro会用不同的face来标记
 
-# 如何编写compiler macro
+## 如何编写compiler macro
 
-## compiler macro的定义
+### compiler macro的定义
 
 compiler-macro的定义和常规宏一样, 是一个返回一个s表达式的lambda, 这个lambda接收
 的参数数量视用户调用compiler macro对应的函数时传入的数量而定. 第一个参数固定为要展开的form,
 其余的参数依次为用户传入函数调用的参数.
 
-## `compiler-macro` symbol property
+### `compiler-macro` symbol property
 
 为了使compiler macro生效, 你需要将你定义的compiler macro设置为目标函数symbol的
 `compiler-macro` property上.
@@ -123,15 +125,15 @@ Form: (my-list 1 2 3 4), ARGS: (1 2 3 4)
 
 当你的compiler macro只用于一个函数, 一般可以忽略掉form直接用args.
 
-## declare form
+### declare form
 
 在Emacs 24.4 或更高版本, 你可以直接在函数的`declare` form中指定compiler macro,
 
 详见[manual](https://www.gnu.org/software/emacs/manual/html_node/elisp/Declare-Form.html)
 
-# 实战
+## 实战
 
-## `my-list*` 函数
+### `my-list*` 函数
 
 考虑函数`my-list*`, 它接受任意数量的参数, 将他们从头用cons连接到尾部.
 
@@ -196,7 +198,7 @@ ELISP> (cl-compiler-macroexpand '(my-list* 1 2 3 4 5 6 6 7 8 9))
 
 可以看到我们写的compiler macro已经如愿展开了.
 
-## 注意事项
+### 注意事项
 
 警告: 在compiler macro中, 你可以随意修改函数展开的方式, 如果操作不当, 很可能会导
 致直接调用函数与`funcall`调用函数时函数的行为不一致!
@@ -221,7 +223,7 @@ ELISP> (cl-compiler-macroexpand '(my-list* 1 2 3 4 5 6 6 7 8 9))
 `(my-id 1)` 和`(funcall f 1)`造成了不一致的结果, 请使用compiler macro的时候务必
 注意, 小心不要造成undefined behaviour.
 
-# 广义变量展开中的compiler macro
+## 广义变量展开中的compiler macro
 
 由于`macroexpand`可以展开compiler macro, 因此`setf`也会打开广义变量里的
 compiler macro
@@ -248,12 +250,12 @@ setter的默认值`(setf my-aref)`(当然这里我们没有定义),
 `aref` Emacs已经定义了`aref`的gv-setter`aset`, `setf`就可以直接使用aset作为
 my-aref的gv-setter
 
-# define-inline
+## define-inline
 
 为了更好的利用compiler macro, Emacs 25提供了`inline.el`, 作为compiler的上层包装,
 协助用户更好更简单写出安全的内联函数.
 
-## inline-quote
+### inline-quote
 
 用`define-inline` 定义函数类似于定义一个宏, 不过用`inline-quote`代替 `` ` ``
 在`inline-quote`中, 你只能使用`,`而不能使用`,@`, 这是为了防止生成的compiler
@@ -292,7 +294,7 @@ macro意外的破坏函数语义.
 
 可以看出来底层还是用的compiler macro的机制.
 
-## inline-letevals
+### inline-letevals
 
 考虑函数
 
@@ -362,7 +364,7 @@ macro意外的破坏函数语义.
 可以看出来`inline-letevals`类似与我们编写macro时用let和gensym保护expression的方
 式.
 
-# 使用function+compiler-macro与直接使用macro的区别
+## 使用function+compiler-macro与直接使用macro的区别
 
 从语法上看macro不能作为高阶函数的参数使用(当然你可以拐着弯用lambda包裹macro). 而
 function可以.
@@ -373,7 +375,7 @@ compiler macro和macro一样, 会被Emacs的Eager macroexpansion机制打开.
 数和宏完全是两种不同语义的东西, 如果你需要内联函数优化, 请使用compiler macro, 或
 者`define-inline`这种上层包装.
 
-# 用compiler macro做内联和使用`defsubst`的内联有什么区别?
+## 用compiler macro做内联和使用`defsubst`的内联有什么区别?
 
 `defsubst`是另一种定义内联函数的方式, 对比compiler macro, `defsubst`内联的方式更
 为保守.
@@ -411,6 +413,6 @@ compiler macro和macro一样, 会被Emacs的Eager macroexpansion机制打开.
 能同时执行, 而type被作为函数`say-is`的参数, `say-is`会将其eval. 这样我们就达成了
 类似`lazy evaluation`的效果
 
-# 相关讨论
+## 相关讨论
 
 [见emacs-china论坛](https://emacs-china.org/t/elisp-compiler-macro/10552)

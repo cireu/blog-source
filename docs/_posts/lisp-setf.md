@@ -1,10 +1,9 @@
 ---
-title: setf 中 "f" 的本意
 date: 2019-09-17
 tag:
  - lisp
 ---
-# setf 中 "f" 的本意
+# setf 中 「f」 的本意
 
 ## (setf (car cons) 'cdr)
 

@@ -1,5 +1,4 @@
 ---
-title: 浅析 emacs-lisp 中的 compiler-macro
 date: 2019-09-10
 tag:
  - emacs
@@ -26,10 +25,10 @@ tag:
 compiler macro并不能算作与macro和function类比的组织抽象的方式, 只能算作Elisp 为
 我们提供的函数优化器, 它没有自己独立的语义, 而是依附于函数而存在.
 
-NOTE:
-
+::: warning
 一个例外是`(funcall #'func 1 2)` 或者`(apply #'func '(1 2 3 4))`, byte-compiler
 会消除掉这种`funcall`或者`apply`, 然后交给compiler macro展开.
+:::
 
 ## 如何察看compiler macro的展开结果
 
@@ -198,9 +197,8 @@ ELISP> (cl-compiler-macroexpand '(my-list* 1 2 3 4 5 6 6 7 8 9))
 
 可以看到我们写的compiler macro已经如愿展开了.
 
-### 注意事项
-
-警告: 在compiler macro中, 你可以随意修改函数展开的方式, 如果操作不当, 很可能会导
+::: danger
+在compiler macro中, 你可以随意修改函数展开的方式, 如果操作不当, 很可能会导
 致直接调用函数与`funcall`调用函数时函数的行为不一致!
 
 ``` lisp
@@ -208,7 +206,7 @@ ELISP> (cl-compiler-macroexpand '(my-list* 1 2 3 4 5 6 6 7 8 9))
 
 (put 'my-id 'compiler-macro
      (lambda (_ arg)
-       `(list ,arg)))
+       `(list ,arg))) ; Malformed compiler macro
 
 ;; Compiler macro不会在解释运行时展开, 这里使用`my-id'的原始定义.
 (my-id 1)                               ;=> 1
@@ -222,6 +220,7 @@ ELISP> (cl-compiler-macroexpand '(my-list* 1 2 3 4 5 6 6 7 8 9))
 这里利用funcall规避了compiler macro展开, 由于我们的compiler macro不规范, 导致
 `(my-id 1)` 和`(funcall f 1)`造成了不一致的结果, 请使用compiler macro的时候务必
 注意, 小心不要造成undefined behaviour.
+:::
 
 ## 广义变量展开中的compiler macro
 

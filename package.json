@@ -10,11 +10,12 @@
     "vuepress": "^1.1.0"
   },
   "devDependencies": {
-    "@vuepress/theme-blog": "^1.2.5"
+    "@vuepress/theme-blog": "^1.2.5",
+    "vuepress-plugin-container": "^2.0.2"
   },
   "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "docs:build": "vuepress build docs"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:build": "vuepress build docs"
   },
   "repository": {
     "type": "git",

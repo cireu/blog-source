@@ -12,7 +12,7 @@
   "devDependencies": {
     "@vuepress/theme-blog": "^1.2.5",
     "vuepress-plugin-container": "^2.0.2",
-    "vuepress-plugin-rss": "^2.0.0"
+    "vuepress-plugin-rss": "github:cireu/vuepress-plugin-rss#fix/page-title"
   },
   "scripts": {
     "docs:dev": "vuepress dev docs",

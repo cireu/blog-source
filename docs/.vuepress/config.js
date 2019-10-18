@@ -1,3 +1,5 @@
+const BLOG_URL_BASE='https://cireu.github.io'
+
 module.exports = {
     theme: '@vuepress/theme-blog',
     title: 'NIL',
@@ -20,7 +22,7 @@ module.exports = {
         }],
         ['rss', {
             base_url: '/',
-            site_url: 'https://cireu.github.io',
+            site_url: BLOG_URL_BASE,
             count: 20,
             copyright: 'Zhu Zihao'
         }],
@@ -31,7 +33,7 @@ module.exports = {
             { text: '标签', link: '/tag/' },
             { text: '关于', link: '/about' },
             { text: '友情链接', link: '/links' },
-            { text: 'RSS', link: '/rss.xml' },
+            { text: 'RSS', link: `${BLOG_URL_BASE}/rss.xml`},
         ]
     }
 }

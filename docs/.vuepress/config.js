@@ -18,6 +18,12 @@ module.exports = {
             type: 'warning',
             defaultTitle: '警告',
         }],
+        ['rss', {
+            base_url: '/',
+            site_url: 'https://cireu.github.io',
+            count: 20,
+            copyright: 'Zhu Zihao'
+        }],
     ],
     themeConfig: {
         nav: [
@@ -25,6 +31,7 @@ module.exports = {
             { text: '标签', link: '/tag/' },
             { text: '关于', link: '/about' },
             { text: '友情链接', link: '/links' },
+            { text: 'RSS', link: '/rss.xml' },
         ]
     }
 }

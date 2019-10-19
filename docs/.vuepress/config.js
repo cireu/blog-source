@@ -6,6 +6,9 @@ module.exports = {
     base: '/',
     markdown: {
         lineNumbers: true,
+        extendMarkdown: md => {
+            md.use(require('markdown-it-footnote'))
+        }
     },
     plugins: [
         ['container', {

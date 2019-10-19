@@ -1,4 +1,5 @@
 ---
+type: post
 date: 2019-10-18
 tag:
   - emacs

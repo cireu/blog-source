@@ -364,7 +364,9 @@ macro意外的破坏函数语义.
 可以看出来`inline-letevals`类似与我们编写macro时用let和gensym保护expression的方
 式.
 
-## 使用function+compiler-macro与直接使用macro的区别
+## FAQ
+
+### 为什么不直接使用macro?
 
 从语法上看macro不能作为高阶函数的参数使用(当然你可以拐着弯用lambda包裹macro). 而
 function可以.
@@ -375,7 +377,7 @@ compiler macro和macro一样, 会被Emacs的Eager macroexpansion机制打开.
 数和宏完全是两种不同语义的东西, 如果你需要内联函数优化, 请使用compiler macro, 或
 者`define-inline`这种上层包装.
 
-## 用compiler macro做内联和使用`defsubst`的内联有什么区别?
+### 用compiler macro做内联和使用`defsubst`的内联有什么区别?
 
 `defsubst`是另一种定义内联函数的方式, 对比compiler macro, `defsubst`内联的方式更
 为保守.

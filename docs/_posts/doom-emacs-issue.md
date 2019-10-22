@@ -46,6 +46,17 @@ doom-emacs 源码时, 实际上`lambda!` 只被使用了 4 次[^lambda2], 这令
 因为你完全可以用`defun`直接定义一个有名字的 interactive 函数, 而不需要用`fset`+
 `lambda!`这种令人费解的操作...
 
+``` lisp
+;; It's the same!
+;; And `defun' form even have better indentation...
+(defun my-function ()
+  (interactive)
+  ...body)
+
+(fset 'my-function (lambda! ...body))
+
+```
+
 ### 拙劣的宏设计
 
 混乱的交互界面, 严重缺乏正交性和统一性的设计让 doom-emacs 对用户极其不友好, 往往只

@@ -8,6 +8,7 @@ module.exports = {
         lineNumbers: true,
         extendMarkdown: md => {
             md.use(require('markdown-it-footnote'))
+            md.use(require('markdown-it-pangu'))
         }
     },
     plugins: [

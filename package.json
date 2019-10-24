@@ -11,9 +11,10 @@
   },
   "devDependencies": {
     "@vuepress/theme-blog": "^1.2.5",
+    "markdown-it-footnote": "^3.0.2",
+    "markdown-it-pangu": "^1.0.2",
     "vuepress-plugin-container": "^2.0.2",
-    "vuepress-plugin-rss": "github:cireu/vuepress-plugin-rss#fix/page-title",
-    "markdown-it-footnote": "^3.0.2"
+    "vuepress-plugin-rss": "github:cireu/vuepress-plugin-rss#fix/page-title"
   },
   "scripts": {
     "docs:dev": "vuepress dev docs",

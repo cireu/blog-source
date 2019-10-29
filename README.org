@@ -1,0 +1,23 @@
+#+TITLE: Source code of my personal blog
+
+See https://cireu.github.io for the pages
+
+* Dev
+
+Install NodeJS if you aren't ready.
+
+#+BEGIN_SRC sh
+npm install
+#+END_SRC
+
+This command will run a dev server on ~localhost~ (at port ~6800~ by default)
+
+#+BEGIN_SRC sh
+npm run docs:dev
+#+END_SRC
+  
+To generate the static pages, run
+
+#+BEGIN_SRC sh
+npm run docs:build
+#+END_SRC

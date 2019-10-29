@@ -8,7 +8,7 @@ An Emacs user
 
 除非特殊声明, 本站文章默认按CC BY-SA 4.0协议进行发布
 
-站点源码见: https://github.com/cireu/blog-source
+站点源码见: <https://github.com/cireu/blog-source>
 
 # 联系方式
 

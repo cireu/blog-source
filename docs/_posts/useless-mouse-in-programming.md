@@ -3,6 +3,7 @@ type: post
 date: 2019-11-07
 tag:
   - thinking
+  - programming
 ---
 
 # 使用鼠标可以提升编程效率吗?

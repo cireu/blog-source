@@ -38,6 +38,7 @@ module.exports = {
             { text: '关于', link: '/about' },
             { text: '友情链接', link: '/links' },
             { text: 'RSS', link: `${BLOG_URL_BASE}/rss.xml`},
-        ]
+        ],
+        summary: false,
     }
 }

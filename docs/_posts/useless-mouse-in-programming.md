@@ -131,19 +131,18 @@ VSCode/Atom这种高颜值的『现代』编辑器难以割爱，那就尝试一
 
 ## 相关链接 ##
 
-一篇阐述了鼠标设计理念与日常使用计算机场景的冲突的文章
-
 *  [Mouse considered harmful for most daily
    usage.](http://cat-v.mit.edu/2019-10-15-mouse-considered-harmful.html)
+
+一篇阐述了鼠标设计理念与日常使用计算机场景的冲突的文章
+
+*  [Skim](https://github.com/lotabout/skim)
+*  [Rofi](https://github.com/davatorium/rofi)
 
 个人推荐的部分fuzzy searching and squeezing工具，能大大提升使用键盘执行一些常
 见操作的效率，可在编辑文件以外的场合使用。
 
 Skim是命令行下的ncurses工具，rofi则带有一个GUI界面。
-
-*  [Skim](https://github.com/lotabout/skim)
-*  [Rofi](https://github.com/davatorium/rofi)
-
 
 [^1]: Lisp系方言可以提供这种快捷迅速的反馈体验
 

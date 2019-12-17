@@ -16,6 +16,6 @@
 
 [https://blog.steamedfish.org](https://blog.steamedfish.org)
 
-## ChrisZheng
+## Chris老师
 
 <https://chriszheng.science/>

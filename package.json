@@ -10,7 +10,7 @@
     "vuepress": "^1.2.0"
   },
   "devDependencies": {
-    "@vuepress/theme-blog": "github:cireu/vuepress-theme-blog#fix/invalid-date",
+    "@vuepress/theme-blog": "^2.1.0",
     "markdown-it-footnote": "^3.0.2",
     "markdown-it-pangu": "^1.0.2",
     "vuepress-plugin-container": "^2.1.2",

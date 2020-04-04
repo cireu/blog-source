@@ -6,7 +6,7 @@ tag:
   - rust
 ---
 
-# 用Rust横向扩展Emacs功能
+# 用Rust扩展Emacs功能
 
 ## 摘要
 

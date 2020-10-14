@@ -22,7 +22,7 @@ git add --all .
 if git commit \
        -m "Deploying to Gitlab pages from ${GITHUB_SHA}." \
        --quiet --no-verify; then
-    git push origin --quiet
+    git push origin master --quiet
 fi
 
 popd > /dev/null

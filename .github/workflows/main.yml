@@ -23,5 +23,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_PAGES_TOKEN }}
           BRANCH: master # The branch the action should deploy to.
           REPOSITORY_NAME: cireu/cireu.github.io
-          FOLDER: build # The folder the action should deploy.
+          FOLDER: docs/.vuepress/dist # The folder the action should deploy.
           CLEAN: true # Automatically remove deleted files from the deploy branch

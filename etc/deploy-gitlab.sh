@@ -15,7 +15,8 @@ git remote add origin "https://citreu:${TOKEN}@gitlab.com/citreu/citreu.gitlab.i
 
 git fetch --no-recurse-submodules
 
-cp -rf ${ORIGIN_DIR}/docs/.vuepress/dist/* ./
+rm -rf public
+cp -r ${ORIGIN_DIR}/docs/.vuepress/dist ./public
 
 git add --all .
 

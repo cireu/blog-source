@@ -11,6 +11,7 @@ pushd ../gitlab-checkout > /dev/null
 git init
 git config user.name "Zhu Zihao"
 git config user.email "all_but_last@163.com"
+git remote add origin
 git remote set-url origin "https://citreu:${TOKEN}@gitlab.com/citreu/citreu.gitlab.io"
 
 git fetch --no-recurse-submodules

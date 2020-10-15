@@ -1,4 +1,4 @@
-const BLOG_URL_BASE='https://cireu.github.io'
+const BLOG_URL_BASE='https://citreu.gitlab.io'
 
 module.exports = {
     theme: '@vuepress/theme-blog',
